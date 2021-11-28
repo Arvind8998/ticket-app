@@ -55,18 +55,14 @@ function EnhancedTableHead(props) {
 }
 
 export default function Tickets({ tickets = [], loading, totalTickets }) {
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(25);
+  const [page] = useState(0);
+  const [rowsPerPage] = useState(25);
   const [isTicketDialogOpen, setTicketDialogState] = useState(false);
   const [selectedTicket, setSelectedTicket] = useState(null);
 
   if (loading) {
     return <CircularProgress mt={4} color="success" />;
   }
-
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
 
   const handleRowClick = (row) => {
     setSelectedTicket(row);
@@ -75,11 +71,6 @@ export default function Tickets({ tickets = [], loading, totalTickets }) {
 
   const handleClose = () => {
     setTicketDialogState(false);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
   };
 
   const emptyRows =
@@ -115,7 +106,7 @@ export default function Tickets({ tickets = [], loading, totalTickets }) {
                         onClick={(event) => handleRowClick(row)}
                         role="checkbox"
                         tabIndex={-1}
-                        key={row.name}
+                        key={"idx" + index}
                       >
                         <TableCell
                           component="th"
