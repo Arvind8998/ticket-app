@@ -1,14 +1,13 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import axios from "./Axios";
-import Tickets from "./Tickets";
 import Pagination from "./Pagination";
-import EnhancedTable from "./EnhancedTable";
+import Tickets from "./Tickets";
 
 function App() {
   const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [ticketsPerPage] = useState(2);
+  const [ticketsPerPage] = useState(25);
   const [currentPage, setCurrentPage] = useState(1);
 
   //Get current Page Tickets
@@ -34,13 +33,16 @@ function App() {
 
   return (
     <div className="App">
-      <Tickets tickets={currentTickets} loading={loading} />
+      <Tickets
+        tickets={currentTickets}
+        totalTickets={tickets.length}
+        loading={loading}
+      />
       <Pagination
         ticketsPerPage={ticketsPerPage}
         totalTickets={tickets.length}
         paginate={paginate}
       />
-      <EnhancedTable tickets={currentTickets} loading={loading} />
     </div>
   );
 }
