@@ -63,7 +63,7 @@ EnhancedTableHead.propTypes = {
 export default function Tickets({ tickets, loading, totalTickets }) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(25);
-  const [isTicketDialogOpen, setTicketDialogState] = useState(0);
+  const [isTicketDialogOpen, setTicketDialogState] = useState(false);
   const [selectedTicket, setSelectedTicket] = useState(null);
 
   if (loading) {
@@ -94,7 +94,7 @@ export default function Tickets({ tickets, loading, totalTickets }) {
   return (
     <>
       <Box sx={{ width: "97%", ml: 2.5 }}>
-        <Typography variant="subtitle1" mt={3} mb = {2}>
+        <Typography variant="subtitle1" mt={3} mb={2}>
           Total Tickets: {totalTickets}
         </Typography>
         <Paper sx={{ width: "100%", mb: 2 }}>
