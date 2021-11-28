@@ -134,7 +134,9 @@ export default function Tickets({ tickets, loading, totalTickets }) {
                         <TableCell align="left">
                           {row.is_public ? "Yes" : "No"}
                         </TableCell>
-                        <TableCell align="left">{row.priority}</TableCell>
+                        <TableCell align="left">
+                          {row.priority ? row.priority : "-"}
+                        </TableCell>
                       </TableRow>
                     );
                   })}
