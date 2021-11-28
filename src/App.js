@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "./Axios";
 import Tickets from "./Tickets";
 import Pagination from "./Pagination";
+import EnhancedTable from "./EnhancedTable";
 
 function App() {
   const [tickets, setTickets] = useState([]);
@@ -39,6 +40,7 @@ function App() {
         totalTickets={tickets.length}
         paginate={paginate}
       />
+      <EnhancedTable tickets={currentTickets} loading={loading} />
     </div>
   );
 }
