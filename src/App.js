@@ -1,8 +1,8 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
-import axios from "./Axios";
-import Pagination from "./Pagination";
-import Tickets from "./Tickets";
+import axios from "./Axios/Axios";
+import Pagination from "./Pagination/Pagination";
+import Tickets from "./Tickets/Tickets";
 
 function App() {
   const [tickets, setTickets] = useState([]);

@@ -60,14 +60,14 @@ EnhancedTableHead.propTypes = {
   loading: PropTypes.bool.isRequired,
 };
 
-export default function Tickets({ tickets, loading, totalTickets }) {
+export default function Tickets({ tickets = [], loading, totalTickets }) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(25);
   const [isTicketDialogOpen, setTicketDialogState] = useState(false);
   const [selectedTicket, setSelectedTicket] = useState(null);
 
   if (loading) {
-    return <CircularProgress color="success" />;
+    return <CircularProgress mt={4} color="success" />;
   }
 
   const handleChangePage = (event, newPage) => {
@@ -94,8 +94,13 @@ export default function Tickets({ tickets, loading, totalTickets }) {
   return (
     <>
       <Box sx={{ width: "97%", ml: 2.5 }}>
-        <Typography variant="subtitle1" mt={3} mb={2}>
-          Total Tickets: {totalTickets}
+        <Typography
+          data-testid="totalTicketCount"
+          variant="subtitle1"
+          mt={3}
+          mb={2}
+        >
+          Total {totalTickets <= 1 ? "Ticket" : "Tickets"}: {totalTickets}
         </Typography>
         <Paper sx={{ width: "100%", mb: 2 }}>
           <TableContainer>
