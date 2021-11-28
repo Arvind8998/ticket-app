@@ -19,13 +19,16 @@ function App() {
 
   useEffect(() => {
     const getTickets = async () => {
-      setLoading(true);
-      const response = await axios.get("/get-tickets");
-      if (response.status === 200) {
-        setTickets(response?.data);
+      try {
+        setLoading(true);
+        const response = await axios.get("/get-tickets");
+        if (response?.status === 200) {
+          setTickets(response.data);
+          setLoading(false);
+        }
+      } catch (e) {
         setLoading(false);
-      } else {
-        console.log("Error in fetching tickets");
+        console.log(e.message);
       }
     };
     getTickets();
